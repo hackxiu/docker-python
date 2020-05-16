@@ -21,4 +21,4 @@ RUN echo "http://mirrors.aliyun.com/alpine/v3.11/main" >> /etc/apk/repositories 
     && mkdir .pip
     
 # pip aliyun
-ADD pip.conf ~/.pip/
+ADD pip.conf /root/.pip
