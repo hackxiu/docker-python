@@ -1,4 +1,4 @@
-FROM python:2.7-alpine3.11
+FROM python:3.6-alpine3.11
 
 # update apk repo
 RUN echo "http://dl-4.alpinelinux.org/alpine/v3.11/main" >> /etc/apk/repositories && \
@@ -11,7 +11,7 @@ RUN apk --no-cache -q -U update \
 RUN apk --no-cache -q -U upgrade \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/*
-RUN apk --no-cache -q -U add bash vim chromium chromium-chromedriver
+RUN apk --no-cache -q -U add chromium chromium-chromedriver
 
 # upgrade pip
 RUN pip install --upgrade pip \
