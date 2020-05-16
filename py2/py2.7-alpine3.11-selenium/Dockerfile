@@ -20,7 +20,8 @@ RUN pip install --upgrade pip
 RUN pip install selenium
 RUN echo "http://mirrors.aliyun.com/alpine/v3.11/main" >> /etc/apk/repositories \
     && echo "http://mirrors.aliyun.com/alpine/v3.11/community" >> /etc/apk/repositories \
-    && mkdir ~/.pip
+    && cd ~ \
+    && mkdir .pip
     
 # pip aliyun
 ADD pip.conf ~/.pip/
