@@ -1,8 +1,7 @@
-FROM python:2.7-alpine3.11
+FROM python:2.7.18-alpine3.11
 
 # update apk repo
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.11/main" >> /etc/apk/repositories && \
-    echo "http://dl-4.alpinelinux.org/alpine/v3.11/community" >> /etc/apk/repositories
+RUN repositories /etc/apk/
 
 # install chromedriver
 RUN apk --no-cache -q -U update \
@@ -19,9 +18,7 @@ RUN pip install --upgrade pip \
 
 # install selenium
 RUN pip install selenium
-RUN echo "http://mirrors.aliyun.com/alpine/v3.11/main" >> /etc/apk/repositories \
-    && echo "http://mirrors.aliyun.com/alpine/v3.11/community" >> /etc/apk/repositories \
-    && cd ~ \
+RUN cd ~ \
     && mkdir .pip
     
 # pip aliyun
