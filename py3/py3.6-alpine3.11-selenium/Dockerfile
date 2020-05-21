@@ -10,7 +10,7 @@ RUN apk --no-cache -q -U update \
 RUN apk --no-cache -q -U upgrade \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/*
-RUN apk --no-cache -q -U add chromium chromium-chromedriver
+RUN apk --no-cache -q -U add bash vim gcc musl-dev libxslt-dev libffi-dev libressl-dev chromium chromium-chromedriver
 
 # upgrade pip
 RUN pip install --upgrade pip \
