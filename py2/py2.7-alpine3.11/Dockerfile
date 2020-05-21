@@ -1,7 +1,7 @@
 FROM python:2.7.18-alpine3.11
 
 # update apk repo
-RUN repositories /etc/apk/
+ADD repositories /etc/apk/
 
 # install chromedriver
 RUN apk --no-cache -q -U update \
