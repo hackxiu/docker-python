@@ -1,9 +1,10 @@
-FROM python:2.7.18-alpine3.11
+FROM python:3.7-alpine3.11
 
 # update apk repo
-ADD repositories /etc/apk/
+RUN repositories /etc/apk/
 
 # install chromedriver
+RUN apk update
 RUN apk --no-cache -q -U update \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/*
@@ -11,12 +12,13 @@ RUN apk --no-cache -q -U upgrade \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/*
 RUN apk --no-cache -q -U add bash vim gcc make musl-dev libxslt-dev libffi-dev libressl-dev chromium chromium-chromedriver
-
 # upgrade pip
 RUN pip install --upgrade pip \
     && pip install --upgrade setuptools
-RUN cd ~ \
+RUN echo "http://mirrors.aliyun.com/alpine/v3.11/main" >> /etc/apk/repositories \
+    && echo "http://mirrors.aliyun.com/alpine/v3.11/community" >> /etc/apk/repositories \
+    && cd ~ \
     && mkdir .pip
     
 # pip aliyun
-ADD pip.conf /root/.pip/
+ADD pip.conf /root/.pip
